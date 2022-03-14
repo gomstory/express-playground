@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "8d9a372b-2445-44c9-bdfb-acdcbda84123",
+		"name": "Test Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Using Nationallity Filter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Nationality is Correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var nationality = jsonData.results[0].nat",
+							"    var nationality = pm.environment.get(\"nationality\");",
+							"    pm.expect(nationality).to.eql(nationality);",
+							"});",
+							"",
+							"pm.test(\"Check Email is valid\", function() {",
+							"    var jsonData = pm.response.json();",
+							"    var userEmail = jsonData.results[0].email",
+							"    pm.expect(userEmail).to.include(\"@\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://randomuser.me/api?nationality={{Nationality}}",
+					"protocol": "https",
+					"host": [
+						"randomuser",
+						"me"
+					],
+					"path": [
+						"api"
+					],
+					"query": [
+						{
+							"key": "nationality",
+							"value": "{{Nationality}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get nationallity from environment and make a call",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Nationality is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var nationality = pm.environment.get(\"nationality\");",
+							"    var nationality = jsonData.results[0].nat",
+							"    pm.expect(nationality).to.eql(nationality);",
+							"});",
+							"",
+							"pm.test(\"Check Email is valid\", function() {",
+							"    var jsonData = pm.response.json();",
+							"    var userEmail = jsonData.results[0].email",
+							"    pm.expect(userEmail).to.include(\"@\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const nationality = pm.environment.get(\"nationality\");",
+							"pm.request.url += `?nationality=${nationality}`"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://randomuser.me/api",
+					"protocol": "https",
+					"host": [
+						"randomuser",
+						"me"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Nationality",
+			"value": "CA",
+			"type": "string"
+		}
+	]
+}
