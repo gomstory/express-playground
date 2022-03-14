@@ -2,6 +2,30 @@ const express = require("express");
 const app = express();
 const helmet = require("helmet");
 
+// Swagger UI
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            "title": "Sample Pet Store App",
+            "description": "This is a sample server for a pet store.",
+            "termsOfService": "http://example.com/terms/",
+            "contact": {
+              "name": "API Support",
+              "url": "http://www.example.com/support",
+              "email": "support@example.com"
+            },
+            "version": "1.0.1",
+            "servers": ["http://localhost:3000"]
+          }
+    },
+    apis: ['./routes/*.js']
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
 // Midleware
 app.use(helmet());
 app.use(express.static("public"));

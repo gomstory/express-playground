@@ -1,10 +1,19 @@
 const express = require("express");
 const router = express.Router();
 
-router.post("login", (req, res, next) => {
-    res.json("login");
+/**
+ * @swagger
+ * /auth/user:
+ *  get:
+ *   description: Authentication
+ *   responses:
+ *    '200':
+ *     description: Response successfully.
+ *    '401':
+ *     description: User un-authorized
+ */
+router.get('/user', (req, res, next) => {
+    res.status(401).json("un-authorized");
 })
 
-router.get('/auth', (req, res, next) => {
-    res.json("authentication");
-})
+module.exports = router;

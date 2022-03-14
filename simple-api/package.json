@@ -11,6 +11,8 @@
   "dependencies": {
     "express": "^4.17.3",
     "helmet": "^5.0.2",
-    "passport": "^0.5.2"
+    "passport": "^0.5.2",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0"
   }
 }
