@@ -13,7 +13,7 @@ const router = express.Router();
  *     description: User un-authorized
  */
 router.get('/user', (req, res, next) => {
-    res.status(401).json("un-authorized");
+    res.status(401).json({ msg: "un-authorized" });
 })
 
 module.exports = router;

@@ -8,8 +8,8 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerOptions = {
     swaggerDefinition: {
         info: {
-            "title": "Sample Pet Store App",
-            "description": "This is a sample server for a pet store.",
+            "title": "Sample TDD API",
+            "description": "This is a sample API for TDD.",
             "termsOfService": "http://example.com/terms/",
             "contact": {
               "name": "API Support",

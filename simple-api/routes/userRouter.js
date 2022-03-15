@@ -15,7 +15,7 @@ router.use('/', (req, res, next) => {
 
 /**
  * @swagger
- * /user/all:
+ * /all:
  *  get:
  *   description: Get all users in system
  *   responses:

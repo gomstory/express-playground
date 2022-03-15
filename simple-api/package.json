@@ -2,9 +2,10 @@
   "name": "simpl-express",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon",
+    "test": "newman run ./testing/Simple\\ API\\ Testing.postman_collection.json -e ./testing/Simple\\ API\\ Testing\\ Env.postman_environment.json"
   },
   "author": "",
   "license": "ISC",

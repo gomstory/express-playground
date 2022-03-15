@@ -12,7 +12,7 @@ const path = require("path");
  *     description: Response successfully.
  */
 router.get('/', (req, res, next) => {
-    res.download(path.join(__dirname, '../public/data.html' ));
+    res.download(path.join(__dirname, '../public/express.png' ));
 })
 
 
